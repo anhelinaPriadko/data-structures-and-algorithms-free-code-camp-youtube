@@ -42,7 +42,7 @@ Since this solution contains multiple projects under src/, specify which project
 
 
 ## 📁 Repository Structure
-Plaintext
+``` plaintext
 .
 ├── DataStructuresAndAlgorithms.slnx  # Main Solution File
 ├── src/
@@ -51,7 +51,7 @@ Plaintext
 │       └── Program.cs               # Topic entry point & tests
 ├── .gitignore                       # Ignores /bin, /obj, and .vs folders
 └── README.md
-
+```
 ## ➕ Adding a New Project to the Solution
 When moving on to a new course module (e.g., Trees and Graphs), follow these steps in the terminal to create and link a new project:
 
