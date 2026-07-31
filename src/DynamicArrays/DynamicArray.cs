@@ -134,21 +134,11 @@ namespace DynamicArrays
 
         public override string ToString()
         {
-            if(length == 0)
+            if (length == 0) 
             {
                 return "[]";
             }
-            var result = "[";
-            for (int i = 0; i < length; i++)
-            {
-                result += array[i]?.ToString() ?? "null";
-                if (i < length - 1)
-                {
-                    result += ", ";
-                }
-            }
-            result += "]";
-            return result;
+            return "[" + string.Join(", ", array.Take(length)) + "]";
         }
     }
 }
