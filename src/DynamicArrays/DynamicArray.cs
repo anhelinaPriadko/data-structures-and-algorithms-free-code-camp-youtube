@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
+
 
 namespace DynamicArrays
 {
-    public class DynamicArray <T>
+    public class DynamicArray <T>: IEnumerable<T>
     {
         private T[] array;
         private int length; // Number of elements in the array that user thinks are in the array
@@ -90,7 +92,7 @@ namespace DynamicArrays
             int index = - 1;
             for (int i = 0; i < length; i++)
             {
-                if(array[i].Equals(value))
+                if(EqualityComparer<T>.Default.Equals(array[i], value))
                 {
                     index = i;
                     break;
@@ -115,8 +117,39 @@ namespace DynamicArrays
 
         public bool Contains (T value)
         {
-            return IndexOf(value) == -1;
+            return IndexOf(value) != -1;
         }
 
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < length; i++)
+            {
+                yield return array[i];
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public override string ToString()
+        {
+            if(length == 0)
+            {
+                return "[]";
+            }
+            var result = "[";
+            for (int i = 0; i < length; i++)
+            {
+                result += array[i]?.ToString() ?? "null";
+                if (i < length - 1)
+                {
+                    result += ", ";
+                }
+            }
+            result += "]";
+            return result;
+        }
     }
 }
