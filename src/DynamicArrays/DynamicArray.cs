@@ -8,21 +8,19 @@ namespace DynamicArrays
     public class DynamicArray <T>: IEnumerable<T>
     {
         private T[] array;
-        private int length; // Number of elements in the array that user thinks are in the array
+        private int length = 0; // Number of elements in the array that user thinks are in the array
         private int capacity; // Actual size of the array
 
         public DynamicArray()
         {
             capacity = 16;
             array = new T[capacity];
-            length = 0;
         }
 
         public DynamicArray(int capacity)
         {
             this.array = new T[capacity];
             this.capacity = capacity;
-            length = capacity;
         }
 
         public int Size()
@@ -51,6 +49,7 @@ namespace DynamicArrays
             {
                 array[i] = default!;
             }
+            length = 0;
         }
 
         public void Add (T value)
